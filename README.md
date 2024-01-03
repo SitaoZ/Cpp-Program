@@ -80,7 +80,7 @@ bool isCodingFun = true;
 bool isFishTasty = false;
 cout << isCodingFun;  // 输出 1 (true)
 cout << isFishTasty;  // 输出 0 (false)
-``
+```
 - 布尔值输出的话，true是1，false是0
 
 ```c
@@ -97,3 +97,162 @@ int main (){
 }
 ```
 [ASCII和整型对应表格](https://www.w3schools.com/charsets/ref_html_ascii.asp)
+
+
+```c
+#include <string>   // 导入string库，非内建数据类型，需要导入
+#include <iostream> // 导入iostream库
+using namespace std;
+
+int main(){
+    string amino = "Met"
+    cout << amino;
+    return 0;
+}
+```
+- 注意，字符串需要双引号
+
+### 字符串 string
+#### 字符串合并
+```c
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main() {
+    string firstName = "Jhon ";
+    string lastName = "Doe";
+    string fullName = firstName + lastName;
+    cout << fullName;
+    return 0;
+} 
+```
+
+#### 字符串追加
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string firstName = "Jhon ";
+    string lastName = "Doe";
+    // string fullName = firstName.append(lastName);
+    string fullName = firstName + lastName; // 等价于append
+    cout << fullName;
+    return 0;
+}
+```
+
+- 注意，`+`用于字符串是追加，用于数字是求和
+
+#### 字符串长度
+
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    cout << "The length of the alphabet string is : " << alphabet.length();
+    return 0;
+}
+```
+#### 字符串索引
+
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+int main() {
+    string myString = "Hello";
+    cout << myString[0]; // 0-base
+    myString[0] = 'J';
+    cout << myString;
+    string txt = "We are the so-called \"Vikings\" from the north.";
+    cout << txt;
+    return 0;
+}
+```
+- `\`反斜杠转义字符
+- 转义特殊字符`\'`, `\"`, `\\`
+
+#### 输入字符串
+
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string firstName;
+    cout << "Type your first name: ";
+    cin >> firstName;
+    cout << "Your name is: " << firstName;
+    return 0;
+}
+```
+- `cin`将空白(空白，tabs等)视为结束字符
+
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string firstName;
+    cout << "Type your first name: ";
+    getline(cin, firstName);
+    cout << "Your name is: " << firstName;
+    return 0;
+}
+```
+- getline 可以克服上面出现的问题，一次读取一行
+
+#### 忽略Namespace
+
+```c
+#include <string>
+#include <iostream>
+
+int main() {
+    std::string greeting = "Hello";
+    std::cout << greeting;
+    return 0;
+}
+```
+
+### 操作符
+```bash
+算术操作符 Arithmetic operators
+赋值操作符 Assignment operators
+比较运算符 Comparison operators
+逻辑运算符 Logical operators
+位运算    Bitwise operators
+```
+- 算术操作符
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int x = 10, y = 3;
+    cout << x + y << endl;
+    cout << x - y << endl;
+    cout << x * y << endl;
+    cout << x / y << endl;
+    cout << x % y << endl;
+    cout << ++x << endl;
+    cout << --x << endl;
+    cout << --x << endl;
+    return 0;
+}
+```
