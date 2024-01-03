@@ -112,7 +112,7 @@ int main(){
 ```
 - 注意，字符串需要双引号
 
-### 字符串 string
+### 5 字符串 string
 #### 字符串合并
 ```c
 #include <string>
@@ -228,7 +228,7 @@ int main() {
 }
 ```
 
-### 操作符
+### 6 操作符
 ```bash
 算术操作符 Arithmetic operators
 赋值操作符 Assignment operators
@@ -256,3 +256,49 @@ int main() {
     return 0;
 }
 ```
+
+- 赋值操作符
+```c
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a = 10; // =赋值
+    int b = 10;
+    b += 10;    // += 加且赋值
+    int c = 10;
+    c -= 10;    // -= 减号且赋值
+    int d = 10;
+    d *= 3;     // *= 乘且赋值
+    int e = 10;
+    e /= 3;     // /= 除且赋值
+    int f = 10;
+    f %= 3;     // %= 求模且赋值
+    int g = 10;
+    g <<=2;     // 左移且赋值
+    int h = 10;
+    h >>= 2;    // 右移且赋值
+    int i = 10;
+    i &=2;      // 按位与且赋值
+    int j = 10;
+    j |=2;      // 按位或且赋值
+    int k = 10;
+    k ^=2;      // 按位异或且赋值
+    cout << "= 赋值: "<< a << endl;
+    cout << "+= 赋值: "<< b << endl;
+    cout << "-= 赋值: "<< c << endl;
+    cout << "*= 赋值: "<< d << endl;
+    cout << "/= 赋值: "<< e << endl;
+    cout << "%= 赋值: "<< f << endl;
+    cout << "<<= 赋值: "<< g << endl;
+    cout << ">>= 赋值: "<< h << endl;
+    cout << "&= 赋值: "<< i << endl;
+    cout << "|= 赋值: "<< j << endl;
+    cout << "^= 赋值: "<< k << endl;
+    return 0;
+    
+}
+```
+[cpp运算符](https://www.runoob.com/cplusplus/cpp-operators.html)
