@@ -390,3 +390,72 @@ int main() {
 }
 
 ```
+
+### 8 if 条件控制
+c++中使用`if`, `else`和`else if`来处理条件判断
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int time = 22;
+    if (time < 10){
+        cout << "Good morning.";
+    } else if (time < 20){
+        cout << "Goof day.";
+    }else{
+        cout << "Good evening.";
+    }
+    return 0;
+}
+```
+
+- 三元表达式
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int time = 20;
+    string result = (time < 18) ? "Good day." : "Good evening.";
+    cout << result;
+}
+```
+### 9 switch 条件控制
+switch 控制中使用 的关键词有`switch`, `case`, `default`。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+int day = 4;
+   switch (day){
+    case 1:
+        cout << "Monday";
+        break;
+    case 2:
+        cout << "Tuesday";
+        break;
+    case 3:
+        cout << "Wednesday";
+        break;
+    case 4:
+        cout << "Thursday";
+        break;
+    case 5:
+        cout << "Friday";
+        break;
+    case 6:
+        cout << "Saturday";
+        break;
+    case 7:
+        cout << "Sunday";
+        break;
+    default:
+        cout << "Looking forward to the Weekend";
+   }
+  return 0;
+}
+```
