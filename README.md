@@ -25,6 +25,7 @@ type variableName=value
 ```cpp
 #include <iostream>
 using namespace std;
+
 int main(){
     int myNum = 15;
     cout << myNum << endl;
@@ -52,6 +53,7 @@ C++用户输入前面使用`cout`打印。现在我们使用`cin`来获取用户
 ```cpp
 #include <iostream>
 using namespace std;
+
 int main(){
     int x;                             // 申明一个变量
     cout << "Type a number: ";         // 键入一个数字，按下enter
@@ -86,6 +88,7 @@ cout << isFishTasty;  // 输出 0 (false)
 ```cpp
 # include <iostream>
 using namespace std;
+
 int main (){
     char myGrade = 'B';
     cout << myGrade;
@@ -132,7 +135,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -152,7 +154,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -166,7 +167,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 int main() {
     string myString = "Hello";
@@ -186,7 +186,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -202,7 +201,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -240,7 +238,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -261,7 +258,6 @@ int main() {
 ```cpp
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -379,7 +375,6 @@ tan(x)|正切
 ```cpp
 #include <cmath>
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -458,4 +453,281 @@ int day = 4;
    }
   return 0;
 }
+```
+
+### 10 while
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0;
+    while (i < 5){
+        cout << i << "\n";
+        i++;
+    }
+    return 0;
+}
+```
+- while必须先条件判断，满足才执行，最少执行0ci
+- do/while最少执行一次
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0;
+    do {
+        cout << i << "\n";
+        i++;
+    }
+    while (i < 5);
+    return 0;
+}
+```
+### 11 for 循环
+```bash
+for(statement 1; statement 2; statement 3){
+    // code block 
+}
+# 语法和awk中for循环的语法一致
+# statement 1:在代码块之前执行
+# statement 2:执行代码块的条件
+# statement 3:在代码块执行完成后执行
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for(int i = 0; i < 5; i++){
+       cout << i << "\n";
+    }
+    return 0;
+}
+```
+
+- 嵌套循环
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    // 外层循环
+    for(int i = 1; i <= 2; ++i){
+        cout << "Outer: " << i << "\n";
+        // 内层循环
+        for(int j = 1; j <= 3; ++j){
+            cout << "Inner: " << j << "\n";
+        };
+    };
+    return 0;
+}
+```
+
+- foreach 循环
+```bash
+# 语法
+for (type variableName : arrayName){
+    // code block 
+}
+```
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(){
+    int myNumbers[5] = {10, 20, 30, 40, 50}; // 申明一个数组，含有5个元素
+    for (int i : myNumbers){
+        cout << i << "\n";
+    }
+    return 0;
+}
+```
+
+### 12 break/continue
+
+- break跳出循环
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 10; i++){
+        if (i == 4){
+            break;
+        }
+    cout << i << "\n"; // 输出0 1 2 3 
+    }
+}
+```
+- continue跳出当前循环
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 10; i++){
+        if (i == 4){
+            continue;
+        }
+    cout << i << "\n"; // 输出0 1 2 3 5 6 7 8 9
+    }
+}
+```
+
+- break/continue in while
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0;
+    while (i < 10){
+        cout << i << "\n";
+        i++;
+        if (i == 4){
+            break;
+        } 
+    }
+    return 0;
+}
+
+```
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(){
+    int i = 0;
+    while (i < 10) {
+        if (i == 4) {
+            i++;
+            continue;
+        }
+        cout << i << "\n";
+        i++;
+    }
+}
+```
+
+### 13 数组
+
+数组用于在一个变量中储存多个值。申明数组之前，需要指定变量的类型、变量名且后面接方括号`[]`, 同时`[n]`需要指定元素的个数。
+```cpp
+string nucleotides[4];
+string nucleotides[4] = {"A", "T", "C", "G"};
+int week[7] = {1, 2, 3, 4, 5, 6, 7}; 
+```
+- 数组索引
+```cpp
+string nucleotides[4] = {"A", "T", "C", "G"};
+cout << nucleotides[0]; // "A"
+```
+- 改变数组元素
+```cpp
+string nucleotides[4] = {"A", "T", "C", "G"};
+nucleotides[1] = "U"
+cout << nucleotides[1]; // "U"
+```
+- 循环数组
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string bases[4] = {"A", "T", "C", "G"};
+    for (int i = 0; i < 4; i++){
+        cout << i << " = " << bases[i] << "\n";
+    }
+    return 0;
+}
+```
+
+- foreach
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int myNumbers[5] = {10, 20, 30, 40, 50};
+    for (int i : myNumbers) {
+        cout << i << "\n";
+    }
+    return 0;
+}
+
+```
+- 忽略数组大小
+在c++中也可以不指定数组大小，编译器会自己识别
+```cpp
+string bases[] = {"A", "T", "C", "G"};
+```
+- 省略声明中的元素
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+    string bases[4];
+    bases[0] = "A";
+    bases[1] = "T";
+    bases[2] = "C";
+    bases[3] = "G";
+    for (int i = 0; i < 4; i++){
+        cout << i << " = " << bases[i] << "\n";
+    }
+    return 0;
+}
+
+```
+- 数组大小
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int myNumbers[5] = {10, 20, 30, 40, 50};
+    cout << sizeof(myNumbers);
+    return 0;
+}
+```
+返回值是`20`，是数组所占存储的大小，一个`int`是`4 bytes`, `5`个元素占`20 bytes`。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int myNumbers[5] = {10, 20, 30, 40, 50};
+    int getArrayLength = sizeof(myNumbers) / sizeof(int);
+    cout << getArrayLength;
+    return 0;
+}
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int myNumbers[5] = {10, 20, 30, 40, 50};
+    for (int i = 0; i < sizeof(myNumbers) / sizeof(int); i++) {
+        cout << myNumbers[i] << "\n";
+    }
+    return 0;
+}
+```
+
+- 多维数组
+multi-dimensional arrays 数组的元素还是一个数组。
+
+```cpp
+string letters[2][4]
+
 ```
