@@ -1094,3 +1094,167 @@ int main() {
 }  
 ```
 ### 8 函数重载 overloading
+多个不同的函数可以使用相同的函数名，但是参数不同。避免定义很多
+```bash
+int myFunction(int x, int y)
+float myFunction(float x, float y)
+double myFunction(double x, double y)
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int plusFunc(int x, int y){
+    return x + y;
+}
+
+double plusFunc(double x, double y){
+    return x + y;
+}
+
+int main() {
+    int myNum1 = plusFunc(3, 5);
+    double myNum2 = plusFunc(3.3, 5.5);
+    cout << "Int: " << myNum1 << "\n";
+    cout << "Double: " << myNum2 << "\n";
+    return 0;
+}
+
+```
+### 9 函数递归
+函数调用自身就是递归。递归能够将复杂的问题简单化。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int sum(int k) {
+  if (k > 0) {
+    return k + sum(k - 1);
+  } else {
+    return 0;
+  }
+}
+
+int main() {
+  int result = sum(10);
+  cout << result;
+  return 0;
+}
+```
+
+## 第三章：类
+
+### 面对对象
+类就是面向对象编程(Object-Oriented Programming)。
+面向对象编程的特点。
+- OOP 速度快，更容易执行
+- OOP 程序结构更加清楚
+- OOP 创建重复使用的模块，节约开发时间
+
+```cpp
+class MyClass {          // 类
+    public:              // 限定访问属性的关键字
+        int myNum;       // 属性
+        string myString; // 属性
+};                       // 分号结束
+```
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class MyClass {
+    public:
+        int myNum;
+        string myString;
+};
+
+int main() {
+    MyClass myObj; // 创建一个MyClass对象
+    // 获取属性，赋值
+    myObj.myNum = 15;
+    myObj.myString = "Some text";
+    // 打印属性
+    cout << myObj.myNum << "\n";
+    cout << myObj.myString << "\n";
+    return 0;
+}
+```
+#### 对象的方法
+属于类的函数成为方法。
+- 有两种定义方式
+  - 类内部定义
+  - 类外部定义
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class MyClass {         // 类
+  public:               // 属性访问
+    void myMethod() {   // 方法，类内部定义
+      cout << "Hello World!";
+    }
+};
+
+int main() {
+  MyClass myObj;     // 创建类
+  myObj.myMethod();  // 调用方法
+  return 0;
+}
+
+```
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+// 创建类，但是不写方法的代码块
+class MyClass {
+    public:
+        void myMethod();
+};
+// 类外部创建方法
+void MyClass::myMethod(){
+   cout << "Hello World!";
+}
+
+int main() {
+    MyClass myObj;    // 创建类
+    myObj.myMethod(); // 调用函数方法
+    return 0;
+}
+```
+
+#### 构造函数
+类的构造函数是特殊的函数，每次创建类的新对象时执行。
+构造函数的名称和类的名称相同，且不会返回任何类型，
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class MyClass {                     // 创建类
+    public:                         // 访问限定符
+        MyClass(){                  // 构造函数
+            cout << "Hello World!";
+        }
+};
+
+int main() {
+    MyClass myObj; // 创建该类时，会自动执行构造函数
+    return 0;
+}
+```
+
+-构造函数传入参数
+
+
+
+
