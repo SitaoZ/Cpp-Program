@@ -1,5 +1,5 @@
 # C++语言学习记录
-## 基础知识点
+## 第一章: 基础知识点
 ### 1 初识C++
 
 ```cpp
@@ -868,6 +868,7 @@ int main() {
 }
 ```
 `&`符号也可以用于c++变量的物理内存地址查询, 内存地址是十六进制 hexadecimal。
+
 ```cpp
 #include <iostream>
 #include <string>
@@ -928,4 +929,120 @@ int main() {
 }
 ```
 
-## 函数
+## 第二章: 函数
+
+- 函数是用于特定计算的代码块
+- 函数为的是代码复用
+- 传如参数即可调用
+### 1 创建函数
+```bash
+# 语法
+void myFunction() {
+    // code block 
+}
+# myFunction() 函数名
+# void 表示该函数没有返回值
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void myFunction(){
+    cout << "I just go executed!";
+}
+
+int main() {
+    myFunction(); // 调用函数
+    return 0;
+}
+```
+- 注意，函数可以多次调用
+### 2 函数参数
+```bash
+# 语法
+void functionName(parameter1, parameter2, parameter3){
+    // code block
+}
+```
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void myFunction(string fname){
+    cout << fname << " Refsnes\n";
+}
+
+int main() {
+    myFunction("Liam");
+    myFunction("Jenny");
+    myFunction("Anja");
+    return 0;
+}
+```
+### 3 默认参数
+默认参数在函数定义是写在`()`内。
+```cpp
+#include <iostream>
+using namespace std;
+
+void myFunction(string country = "Norway"){
+   cout << country << "\n";
+}
+
+int main() {
+    myFunction("Sweden");
+    myFunction("India");
+    myFunction();
+    myFunction("China");
+    return 0;
+}
+```
+
+### 4 多个参数
+```cpp
+#include <iostream>
+using namespace std;
+
+void myFunction(string fname, int age) {
+  cout << fname << " Refsnes. " << age << " years old. \n";
+}
+
+int main() {
+  myFunction("Liam", 3);
+  myFunction("Jenny", 14);
+  myFunction("Anja", 30);
+  return 0;
+}
+
+```
+
+### 5 返回值
+先前使用的函数都是`void`关键字定义的，均没有返回值。如果要想函数有返回值，需要是使用相应的数据类型作为关键字。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int addFive(int x){
+    return x + 5;
+}
+
+int sumTwoValue(int x, int y){
+    return x + y;
+}
+
+int main() {
+    cout << addFive(3) << "\n";
+    cout << sumTwoValue(10,20) << "\n";
+    int sum = sumTwoValue(30,40);
+    cout << sum << "\n";
+    return 0;
+}
+```
+### 6 传递引用
+
+
