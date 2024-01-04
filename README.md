@@ -1,5 +1,5 @@
-## C++语言学习记录
-
+# C++语言学习记录
+## 基础知识点
 ### 1 初识C++
 
 ```cpp
@@ -618,6 +618,7 @@ int main(){
 ### 13 数组
 
 数组用于在一个变量中储存多个值。申明数组之前，需要指定变量的类型、变量名且后面接方括号`[]`, 同时`[n]`需要指定元素的个数。
+数组的元素类型必须一致。
 ```cpp
 string nucleotides[4];
 string nucleotides[4] = {"A", "T", "C", "G"};
@@ -728,6 +729,203 @@ int main() {
 multi-dimensional arrays 数组的元素还是一个数组。
 
 ```cpp
-string letters[2][4]
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string letters[2][4] = {
+        {"A", "B", "C", "D"},
+        {"E", "F", "G", "H"}
+    };
+    cout << letters[0][0] << "\n";
+    letters[0][0] = "Z";
+    cout << letters[0][0] << "\n";
+    for (int i = 0; i < 2; i++){
+        for (int j = 0; j < 4; j++){
+            cout << letters[i][j] << "\n";
+        }
+    }
+    return 0;
+}
 
 ```
+
+### 14 结构 structures(struct)
+结构(struct)允许将不同类型且有关系的变量放在一起，每个变量都是结构的一个成员。
+和数组不同，struct可以包含多种数据类型。创建结构时，使用关键字`struct`。
+```bash
+struct {            // structue 声明
+   int Num;         // 成员， 整型
+   string myString; // 成员，字符串
+} muStructure; // 结构变量
+```
+- 使用结构成员采用`.`语法
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    struct {
+        int myNum;
+        string myString;
+    } myStructure;
+    myStructure.myNum = 1;
+    myStructure.myString = "ATCG";
+    cout << myStructure.myNum << "\n";
+    cout << myStructure.myString << "\n";
+    return 0;
+}
+```
+- 多结构变量逗号分隔`,`
+
+```cpp
+struct{
+    int myNum;
+    string myString;
+} myStruct1, myStruct2, myStruct3; // 多个结构变量名，使用逗号分隔
+```
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  struct {
+    string brand;
+    string model;
+    int year;
+  } myCar1, myCar2; // 使用多好分隔变量名
+
+  // 放入数据到第一个结构中
+  myCar1.brand = "BMW";
+  myCar1.model = "X5";
+  myCar1.year = 1999;
+
+  // 放入数据到第二个结构中
+  myCar2.brand = "Ford";
+  myCar2.model = "Mustang";
+  myCar2.year = 1969;
+
+  // 打印结构成员
+  cout << myCar1.brand << " " << myCar1.model << " " << myCar1.year << "\n";
+  cout << myCar2.brand << " " << myCar2.model << " " << myCar2.year << "\n";
+  return 0;
+}
+```
+
+- Named struct 命名结构
+变量名放置在`struct`右边，即可创建。
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct amino {
+    string abbr;
+    string fullName;
+    float isoelectric;
+};
+
+int main() {
+    // 第一个氨基酸
+    amino firstAmino;
+    firstAmino.abbr = "Met";
+    firstAmino.fullName = "Methionine";
+    firstAmino.isoelectric = 5.74;
+
+    // 第二个氨基酸
+    amino secondAmino;
+    secondAmino.abbr = "Ala";
+    secondAmino.fullName = "Alanine";
+    secondAmino.isoelectric = 6.11;
+
+    //打印氨基酸
+    cout << firstAmino.abbr << " " << firstAmino.fullName << " " << firstAmino.isoelectric << "\n";
+    cout << secondAmino.abbr << " " << secondAmino.fullName << " " << secondAmino.isoelectric << "\n";
+    return 0;
+}
+```
+### 15 References 引用
+使用`&`符号创建引用。
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string food = "Pizza";
+  string &meal = food;
+
+  cout << food << "\n";
+  cout << meal << "\n";
+  return 0;
+}
+```
+`&`符号也可以用于c++变量的物理内存地址查询, 内存地址是十六进制 hexadecimal。
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string food = "Pizza";
+    cout << &food;
+    return 0;
+}
+```
+
+### 16 Pointers 指针
+指针是一个变量，采用存储内存地址作为指针的值。
+```bash
+# 推荐使用这种方式创建
+string* mystring;
+```
+- 创建指针
+使用`&`创建指针。
+ 
+- 解引用 dereference
+使用`*`解引用。
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string food = "Pizza";
+    string* ptr = &food;  // 创建指针
+    cout << food << "\n";
+    cout << &food << "\n";
+    cout << ptr << "\n";  // 打印指针
+    cout << *ptr << "\n"; // 打印指针对应的值
+    return 0;
+}
+```
+- 修改指针的值
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string food = "Pizza";
+    string* ptr= &food;    // 创建指针
+    cout << food << "\n";  // 打印变量
+    cout << &food << "\n"; // 打印变量的内存地址
+    cout << *ptr << "\n";  // 指针解析
+    *ptr = "Hamburger";    // 改变指针的值
+    cout << *ptr << "\n";   // 打印新指针的值
+    cout << food << "\n";   //打印food变量的新值
+    return 0;
+
+}
+```
+
+## 函数
