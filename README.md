@@ -2,7 +2,7 @@
 
 ### 1 初识C++
 
-```c++
+```cpp
 #include <iostream>  // line1: 单行注释语法，使用两个正斜杆。头文件(header file library)，让我们使用输入和输出
 using namespace std; // line2: 我们可以从标准文库中使用对象和变量
                      // line3: 空白行，增加代码可读性
@@ -22,7 +22,7 @@ int main() {
 type variableName=value
 ```
 
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 int main(){
@@ -49,7 +49,7 @@ int main(){
 ### 3 输入
 C++用户输入前面使用`cout`打印。现在我们使用`cin`来获取用户输入。(读作：see-out, see-in)
 
-```c
+```cpp
 #include <iostream>
 using namespace std;
 int main(){
@@ -63,7 +63,7 @@ int main(){
 
 ### 4 数据结构
 
-```c
+```cpp
 int myNum = 5;             // 整型
 float myFloatNum = 5.99;   // 浮点型
 double myDoubleNum = 9.98; // 浮点型
@@ -75,7 +75,7 @@ double d1 = 12E4           // E也可以表示10的幂
 ```
 - `float`和`double`的区别在于精度，float一般能到小数点后6或7位，double可以精确到小数点后15位，一般情况下使用`double`
 
-```c
+```cpp
 bool isCodingFun = true;
 bool isFishTasty = false;
 cout << isCodingFun;  // 输出 1 (true)
@@ -83,7 +83,7 @@ cout << isFishTasty;  // 输出 0 (false)
 ```
 - 布尔值输出的话，true是1，false是0
 
-```c
+```cpp
 # include <iostream>
 using namespace std;
 int main (){
@@ -99,7 +99,7 @@ int main (){
 [ASCII和整型对应表格](https://www.w3schools.com/charsets/ref_html_ascii.asp)
 
 
-```c
+```cpp
 #include <string>   // 导入string库，非内建数据类型，需要导入
 #include <iostream> // 导入iostream库
 using namespace std;
@@ -114,7 +114,7 @@ int main(){
 
 ### 5 字符串 string
 #### 字符串合并
-```c
+```cpp
 #include <string>
 #include <iostream>
 using namespace std;
@@ -129,7 +129,7 @@ int main() {
 ```
 
 #### 字符串追加
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -149,7 +149,7 @@ int main() {
 
 #### 字符串长度
 
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -163,7 +163,7 @@ int main() {
 ```
 #### 字符串索引
 
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -183,7 +183,7 @@ int main() {
 
 #### 输入字符串
 
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -199,7 +199,7 @@ int main() {
 ```
 - `cin`将空白(空白，tabs等)视为结束字符
 
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -217,7 +217,7 @@ int main() {
 
 #### 忽略Namespace
 
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -237,7 +237,7 @@ int main() {
 位运算    Bitwise operators
 ```
 - 算术操作符
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -258,7 +258,7 @@ int main() {
 ```
 
 - 赋值操作符
-```c
+```cpp
 #include <string>
 #include <iostream>
 
@@ -302,3 +302,91 @@ int main() {
 }
 ```
 [cpp运算符](https://www.runoob.com/cplusplus/cpp-operators.html)
+
+- 比较操作符
+  用于比较两个值或变量，比较返回的是`0`和`1`，在cpp中true(1)、false(0)。
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 5;
+    int y = 3;
+    cout << (x == y) << endl;  // 等于 0
+    cout << (x != y) << endl;  // 不等于 1
+    cout << (x > y) << endl;   // 大于 1
+    cout << (x < y) << endl;   // 小于 0
+    cout << (x >= y) << endl;  // 大于且等于 1
+    cout << (x <= y) << endl;  // 小于且等于 0
+    return 0; 
+
+}
+```
+
+- 逻辑操作符
+  逻辑和`&&` 或`||` 非 `!`
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 5;
+    int y = 3;
+    cout << (x > 3 && y < 10) << endl;     // 逻辑与， 返回1
+    cout << (x > 3 || x < 4) << endl;      // 逻辑或， 返回1
+    cout << (!(x > 3 && x < 10)) << endl;  // 逻辑非，返回0
+    return 0;
+
+}
+```
+
+### 7 数学运算
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << max(5, 10) << endl;
+    cout << min(5, 10) << endl;
+    return 0;
+}
+```
+其他的数学函数，需要导入头文件cmath。cmath含有一些列函数，包括
+
+函数|功能
+-|:-:|
+abs(x)|绝对值
+acos(x)|反余弦
+asin(x)|反正弦
+atan(x)|反正切
+cbrt(x)|立方根
+ceil(x)|大于或等于x的最大的整数(向上取整)
+cos(x)|余弦
+cosh(x)|双区余弦
+exp(x)|指数
+expm1(x)|指数-1
+fabs(x)|浮点数的绝对值
+fdim(x, y)|xy的差异
+floor(x)|小于或等于x最大的整数(向下取整)
+pow(x, y)|x的y次幂
+sin(x)|正弦
+tan(x)|正切
+
+
+
+
+```cpp
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    cout << sqrt(64) << endl;
+    cout << round(2.6) << endl;
+    cout << log(2) << endl;
+    return 0;
+}
+
+```
