@@ -1146,7 +1146,7 @@ int main() {
 
 ## 第三章：类
 
-### 面对对象
+### 1 面对对象
 类就是面向对象编程(Object-Oriented Programming)。
 面向对象编程的特点。
 - OOP 速度快，更容易执行
@@ -1184,7 +1184,7 @@ int main() {
     return 0;
 }
 ```
-#### 对象的方法
+#### 2 对象的方法
 属于类的函数成为方法。
 - 有两种定义方式
   - 类内部定义
@@ -1231,7 +1231,7 @@ int main() {
 }
 ```
 
-#### 构造函数
+#### 3 构造函数
 类的构造函数是特殊的函数，每次创建类的新对象时执行。
 构造函数的名称和类的名称相同，且不会返回任何类型，
 
@@ -1253,8 +1253,121 @@ int main() {
 }
 ```
 
--构造函数传入参数
+- 构造函数传入参数
 
+构造函数也像普通的函数一样，可以传入参数。
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
 
+class Car {
+    public:
+        string brand;
+        string model;
+        int year;
+        Car(string x, string y, int z){
+            brand = x;
+            model = y;
+            year = z;
+    }
+};
 
+int main() {
+    // 创建类
+    Car carObj1("BMW", "X5", 1999);
+    Car carObj2("Ford", "Mustang", 1969);
+    // 打印
+    cout << carObj1.brand << " " << carObj1.model << " " << carObj1.year << "\n";
+    cout << carObj2.brand << " " << carObj2.model << " " << carObj2.year << "\n";
+    return 0;
+}
+```
 
+和普通方法一样，构造函数也可以外部定义
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {        // 类
+  public:          // 访问级别
+    string brand;  // 属性
+    string model;  // 属性
+    int year;      // 属性
+    Car(string x, string y, int z); // 构造函数声明
+};
+
+// 在类的外部定义构造函数
+Car::Car(string x, string y, int z) {
+  brand = x;
+  model = y;
+  year = z;
+}
+
+int main() {
+    // 创建Car对象，使用不同的初始值
+    Car carObj1("BMW", "X5", 1999);
+    Car carObj2("Ford", "Mustang", 1969);
+
+    cout << carObj1.brand << " " << carObj1.model << " " << carObj1.year << "\n";
+    cout << carObj2.brand << " " << carObj2.model << " " << carObj2.year << "\n";
+    return 0;
+}
+
+```
+
+#### 4 访问限定符 Access Specifier
+在c++中有三种不同的访问限定符号
+- public 类外部可以访问
+- private 类外部不能访问，类里可以访问
+- protected 外部不能访问，但是可以在继承的类中可以访问
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class MyClass {
+    public:   // public 访问
+       int x; // 公共属性
+    private:  // private 访问
+       int y; // 私有属性
+};
+
+int main() {
+    MyClass myObj;
+    myObj.x = 25; // 公共属性
+    myObj.y = 50; // 私有属性，不能访问，报错
+    return 0;
+}
+```
+
+#### 5 封装 encapsulation
+封装就是敏感的信息隐藏起来，避免使用者访问。为了实现封装，必须使用`private`声明类的变量和属性，避免外界的访问。如果想让其他人读取和修改私有成员的属性，你必须定义`public`的`get`和`set`方法。
+封装的意义：
+- 封装能够更好的控制数据，因为修改代码中的一部分，不会影响其他部分的代码
+- 增加数据的安全性
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Employee {
+    private:
+        int salary; // 私有属性
+    public:
+        void setSalary(int s){
+            salary = s;
+        }
+        int getSalary(){
+            return salary;
+        }
+};
+
+int main() {
+    Employee myObj;
+    myObj.setSalary(50000);
+    cout << myObj.getSalary();
+    return 0;
+}
+
+```
