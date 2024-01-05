@@ -1502,3 +1502,134 @@ int main() {
 ```
 
 ### 7 多态 polymorphism
+多态意味着有多重形式，一般发生在我么有多个类，他们彼此之间相互继承。前文可以，继承可以让我们继承其他类的属性和方法。多态就是让我们使用同样的方法完成不同的任务。
+
+```cpp
+# include <iostream>
+#include <string>
+
+using namespace std;
+
+class Animal {
+    public:
+        void animalSound() {
+            cout << "The animal makes a sound \n";
+        }
+};
+
+class Pig : public Animal {
+    public:
+        void animalSound(){
+            cout << "The pig says : wee wee \n";
+        }
+};
+
+class Dog : public Animal {
+    public:
+        void animalSound(){
+            cout << "The dog says: bow bow \n";
+        }
+};
+
+int main() {
+    Animal myAnimal;
+    Pig myPig;
+    Dog myDog;
+
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+    return 0;
+}
+```
+### 9 文件
+c++中使用`fstream`库处理文件。
+
+Class|描述
+-|:-:|
+ofstream|创建和写入文件
+ifstream|读取文件
+fstream|创建、写入和读取文件，是ofstream和ifstream的组合
+
+使用`<<`插入运算符，写入文件。
+- 文件写入
+```cpp
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    // 创建文件
+    ofstream MyFile("firstFile.txt");
+    //写入文件
+    MyFile << "Files can be tricky, but it is fun enough!";
+    // 关闭文件
+    MyFile.close(); // 清除不必要的内存空间
+    return 0;
+}
+```
+
+- 文件读取
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    string myText; 
+    ifstream MyReadFile("firstFile.txt"); // 读取文件
+    while (getline (MyReadFile, myText)){
+        // 输出文件
+        cout << myText;
+    }
+    MyReadFile.close();
+}
+```
+
+#### 10 异常捕获
+c++异常捕获使用三个关键字`try`、`throw`和`catch`来处理。`try`执行代码块，`throw`抛出异常，`catch`定义异常出现后执行的代码块。注意，`try`和`catch`同时出现。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    try{
+      int age = 15;
+      if (age >= 18){
+        cout << "Access granted - you are old enough.";
+      } else {
+        throw 505;
+      }
+    }
+    catch (int myNum){
+      cout << "Access denied - You must be at least 18 years old.\n";
+      cout << "Error Number: " << myNum;
+    }
+    return 0;
+}
+```
+
+-捕获多种类型的异常
+当不知道异常的类型时，可以在catch中使用`...`来捕获不同类型的异常。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  try {
+    int age = 15;
+    if (age >= 18) {
+      cout << "Access granted - you are old enough.";
+    } else {
+      throw 505;
+    }
+  }
+  catch (...) {
+    cout << "Access denied - You must be at least 18 years old.\n";
+  }
+  return 0;
+}
+```
