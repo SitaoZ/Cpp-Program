@@ -1319,8 +1319,8 @@ int main() {
 #### 4 访问限定符 Access Specifier
 在c++中有三种不同的访问限定符号
 - public 类外部可以访问
-- private 类外部不能访问，类里可以访问
-- protected 外部不能访问，但是可以在继承的类中可以访问
+- private 类外部不能访问，但是类里可以访问
+- protected 外部不能访问，但是可以在继承的类中可以访问(和private类似)
 
 ```cpp
 #include <iostream>
@@ -1371,3 +1371,134 @@ int main() {
 }
 
 ```
+
+### 6 继承 Inheritance
+继承定义类(子类)时从其他类(父类)获取相应的属性和方法。
+子类和父类之间使用`:`符号间隔。继承就是为了代码复用。
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+// 基类，父类
+class Vehicle {
+    public:
+        string brand = "Ford";
+        void honk() {
+            cout << "Tuut, tuut! \n";
+    }
+};
+
+// 派生类，子类
+class Car : public Vehicle {
+    public:
+        string model = "Mustang";
+};
+
+int main() {
+    Car myCar;
+    myCar.honk(); // 继承过来的方法
+    cout << myCar.brand + " " + myCar.model; // 继承过来的属性brand
+    return 0;
+}
+```
+- 多级继承
+A继承B，B继承C，则A也是继承C，因此C中的属性和方法，A也可以使用。
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class MyClass {
+    public:
+        void myFunction() {
+            cout << "Some content in parent class.";
+        }
+};
+
+class MyChild: public MyClass {
+};
+
+class MyGrandChild: public MyChild {
+};
+
+int main() {
+    MyGrandChild myObj;
+    myObj.myFunction();
+    return 0;
+}
+```
+
+- 多个继承
+A继承B，A继承C，则A可以同时使用B、C的属性和方法。
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class MyClass {
+    public:
+        void myFunction() {
+            cout << "Some content in parent class.";
+        }
+};
+
+class MyOtherClass {
+    public:
+        void myOtherFunction() {
+            cout << "Some content in another class.";
+    }
+};
+
+// 多个继承
+class MyChildClass: public MyClass, public MyOtherClass {
+};
+
+int main() {
+    MyChildClass myObj;
+    myObj.myFunction();
+    myObj.myOtherFunction();
+    return 0;
+}
+```
+
+- 继承关系中，访问限定符
+前面我们在介绍类的访问限定中了解到，类的有三种级别的限定，public(外部类可用)、private(外部类不可用，但是类自身可用)、protected(外部类不可用，继承的类可用)。
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+    protected: // 保护属性，只有继承的类采用访问
+        int salary;
+};
+
+// 派生类，继承Employee
+class Programmer: public Employee {
+    public:
+        int bonus;
+        void setSalary(int s){
+            salary = s;    // salary属性 继承于Employee
+        }
+        int getSalary() {
+            return salary; // 使用继承的属性
+        }
+};
+
+int main() {
+    Programmer myObj;
+    myObj.setSalary(50000);
+    myObj.bonus = 15000;
+    cout << "Salary: " << myObj.getSalary() << "\n"; // 注意这里不能写成myObj.salary，因为类外部不能访问保护属性
+    cout << "Bonus: " << myObj.bonus << "\n";
+    return 0;
+}
+```
+
+### 7 多态 polymorphism
