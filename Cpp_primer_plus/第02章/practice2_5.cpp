@@ -3,16 +3,16 @@
 #include <iostream>
 using namespace std;
 
-double centigradeTofahrenheit(double cent){
+double celsiusTofahrenheit(double cent){
   return 1.8 * cent + 32.0;
 }
 
 int main ()
 {
-  double centigrade, fahrenheit;
-  cout << "Please enter the centigrade: ";
-  cin >> centigrade;
-  fahrenheit = centigradeTofahrenheit(centigrade);
-  cout << "The centigrade " << centigrade << " is " << fahrenheit << " fahrenheit." << endl;
+  double celsius, fahrenheit;
+  cout << "Please enter a Celsius value: ";
+  cin >> celsius;
+  fahrenheit = celsiusTofahrenheit(celsius);
+  cout << "The Celsius " << celsius << " is " << fahrenheit << " fahrenheit." << endl;
   return 0;
 }
