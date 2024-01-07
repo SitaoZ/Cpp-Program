@@ -7,7 +7,7 @@ int main()
 {
   int distance;
   int yard;
-  cout << "Please enter the long: " << endl;
+  cout << "Please enter the number of in long unit: " << endl;
   cin >> distance;
   yard = 120 * distance;
   cout << distance << " long equal to " << yard << " yard!" << endl;
