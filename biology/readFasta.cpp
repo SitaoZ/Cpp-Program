@@ -51,7 +51,7 @@ std::vector<FastaSequence> parseFastaFile(const std::string& filename) {
 void writeFastaToFile(const std::string& outputFilename, const std::vector<FastaSequence>& sequences) {
     std::ofstream outFile(outputFilename);  // 打开输出文件
     if (outFile.is_open()) {  // 如果文件成功打开
-        for (const auto& sequence : sequences) {  // 遍历序列向量
+        for (const auto& sequence : sequences) {  // 遍历序列向量. const auto& 循环比auto快, 只读模式
             outFile << ">" << sequence.header << "\n" << sequence.sequence << "\n"; // 将序列和标题写入文件
         }
         outFile.close();  // 关闭文件
