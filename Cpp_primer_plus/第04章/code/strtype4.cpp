@@ -1,5 +1,5 @@
 /*
-* Created by Sitao Zhu on 16-01-2024
+* Edited by Sitao Zhu on 16-01-2024
 */
 
 #include <iostream>
@@ -12,9 +12,9 @@ int main()
   char charr[20];
   string str;
 
-  cout << "Length of string in charr before input:\n"
+  cout << "Length of string in charr before input: "
        << strlen(charr) << endl;
-  cout << "Length of string in str before input:\n"
+  cout << "Length of string in str before input: "
        << str.size() << endl;
   cout << "Enter a line of text:\n";
   cin.getline(charr, 20); // 读取一行，指定最大长度
