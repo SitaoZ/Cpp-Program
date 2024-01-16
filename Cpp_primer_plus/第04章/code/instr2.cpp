@@ -17,3 +17,5 @@ int main()
   cout << " for you, " << name << ".\n";
   return 0;
 }
+
+// getline 它通过换行符来确定行尾，但不保存换行符
